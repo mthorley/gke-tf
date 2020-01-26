@@ -15,6 +15,7 @@ end
 
 control 'PL.GKE.C-02' do 
   impact 1.0
+  tag "CIS GKE 6.8.4"
   title 'Legacy ABAC disabled'
   desc 'Legacy ABAC is deprecated and must not be enabled - instead use RBAC.'
   describe gke_config do
@@ -33,6 +34,7 @@ end
 
 control 'PL.GKE.C-04' do
   impact 1.0
+  tag "CIS GKE 6.7.1"
   title 'GKE logging must be enabled'
   desc 'GKE logging must be enabled.'
   describe gke_config do 
@@ -42,6 +44,7 @@ end
 
 control 'PL.GKE.C-05' do
   impact 1.0
+  tag "CIS GKE 6.7.1"
   title 'GKE monitoring must be enabled'
   desc 'GKE monitoring must be enabled.'
   describe gke_config do 
@@ -51,6 +54,7 @@ end
 
 control 'PL.GKE.C-06' do
   impact 1.0
+  tag "CIS GKE 1.2.2"
   title 'GKE master basic authentication must be disabled and client cert must not be issued'
   desc 'GKE master basic authentication username and password must be disabled.'
   describe gke_config do
@@ -66,6 +70,7 @@ end
 
 control 'PL.GKE.C-08' do
   impact 1.0
+  tag "CIS GKE 6.6.7"
   title 'Network policy must be enabled'
   desc 'Network policy must be enabled to control pod to pod communication.'
   describe gke_config do
@@ -78,6 +83,7 @@ end
 
 control 'PL.GKE.C-09' do
   impact 1.0
+  tag "CIS GKE 6.6.4"
   title 'Ensure private nodes and private control plane access only'
   desc 'Cluster must be have private endpoints, nodes and a specified master cidr.'
   describe gke_config do
