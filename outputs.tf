@@ -48,3 +48,14 @@ output "gke_private_nodes" {
 output "gke_master_cidr_block" {
   value = google_container_cluster.cluster.private_cluster_config[0].master_ipv4_cidr_block
 }
+
+// assuming multiple node pools 
+output "nps_locations" {
+  value = [ google_container_node_pool.private-np-1.location, 
+            google_container_node_pool.private-np-1.location]
+}
+
+output "nps_oauthscopes" {
+  value = [ google_container_node_pool.private-np-1.node_config[0].oauth_scopes ,
+            google_container_node_pool.private-np-1.node_config[0].oauth_scopes ]
+}
