@@ -32,7 +32,7 @@ class GKETerraformConfig < Inspec.resource(1)
       @outputs['gke_enable_legacy_abac']['value']
     end
 
-    def location
+    def cluster_location
       @outputs['gke_location']['value']
     end
 
@@ -76,4 +76,14 @@ class GKETerraformConfig < Inspec.resource(1)
       @outputs['gke_master_cidr_block']['value']
     end
   
+    # gets all node pools' locations
+    def nps_locations
+      @outputs['nps_locations']['value']
+    end
+
+    # gets all node pools' oauthscopes
+    def nps_oauthscopes 
+      @output['nps_oauthscopes']['value']
+    end
+
   end
