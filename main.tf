@@ -66,7 +66,7 @@ resource "google_container_cluster" "cluster" {
   master_authorized_networks_config {
     cidr_blocks {
       display_name = "homeoffice"
-      cidr_block   = "144.132.96.146/32"
+      cidr_block   = "169.111.111.111/32"
     }
   }
   // Configure the cluster to have private nodes and private control plane access only
