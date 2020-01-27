@@ -26,9 +26,15 @@ end
 control 'PL.GKE.C-03' do
   impact 1.0
   title 'Region containment to AU'
-  desc 'Region must be AU.'
+  desc 'Region for the cluster and all associated node pools must be AU based.'
+  region = 'australia-southeast1'
+
   describe gke_config do 
-    its('location') { should eq 'australia-southeast1'}
+    its('cluster_location') { should eq region}
+  end
+  
+  describe gke_config do
+    its('nps_locations') { should all( match(region) ) }
   end
 end
 
@@ -56,7 +62,7 @@ control 'PL.GKE.C-06' do
   impact 1.0
   tag "CIS GKE 1.2.2"
   title 'GKE master basic authentication must be disabled and client cert must not be issued'
-  desc 'GKE master basic authentication username and password must be disabled.'
+  desc 'GKE master basic authentication username and password must be disabled and client cert must not be issued.'
   describe gke_config do
     its('master_username') { should eq '' }
   end
@@ -95,4 +101,18 @@ control 'PL.GKE.C-09' do
   describe gke_config do
     its('master_cidr_block') { should_not be_empty }
   end
+end
+
+control 'PL.GKE.C-10' do
+  impact 1.0
+  tag "CIS GKE XXX"
+  title 'Ensure node pool oauthscopes are least privilege'
+  desc 'Ensure node pool oauthscopes are least privilege'
+
+#  describe gke_config do 
+#    nps = gke_config.nps_oauthscopes
+#    nps.each do |scopes|
+#      it { scopes should eq "test" }  
+#    end 
+#  end
 end
