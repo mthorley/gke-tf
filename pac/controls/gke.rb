@@ -20,8 +20,6 @@ control 'PL.GKE.C-31' do
   desc 'Network policy must be enabled to control pod to pod communication.'
   describe gke_config do
     it { should have_network_policy_enabled }
-  end
-  describe gke_config do
     it { should_not have_network_policy_config_disabled }
   end
 end
@@ -33,11 +31,7 @@ control 'PL.GKE.C-53' do
   desc 'Cluster must be have private endpoints, nodes and a specified master cidr.'
   describe gke_config do
     it { should have_a_private_endpoint }
-  end
-  describe gke_config do
     it { should have_private_nodes }
-  end
-  describe gke_config do
     its('master_cidr_block') { should_not be_empty }
   end
 end
@@ -50,9 +44,6 @@ control 'PL.GKE.C-54' do
 
   describe gke_config do 
     its('cluster_location') { should eq region}
-  end
-  
-  describe gke_config do
     its('nps_locations') { should all( match(region) ) }
   end
 end
@@ -64,11 +55,7 @@ control 'PL.GKE.C-55' do
   desc 'GKE master basic authentication username and password must be disabled and client cert must not be issued.'
   describe gke_config do
     its('master_username') { should eq '' }
-  end
-  describe gke_config do
     its('master_password') { should eq '' }
-  end
-  describe gke_config do
     it { should_not have_issued_client_cert }
   end
 end
@@ -90,8 +77,6 @@ control 'PL.GKE.C-65' do
   desc 'GKE logging and monitoring must be enabled.'
   describe gke_config do 
     its('logging_service') { should eq 'logging.googleapis.com/kubernetes' }
-  end
-  describe gke_config do 
     its('monitoring_service') { should eq 'monitoring.googleapis.com/kubernetes' }
   end
 end
